@@ -6,10 +6,10 @@
     <title>3steps2 - KI-Potential entfesseln, Prozesse optimieren</title>
     
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/heroicons@2.1.3/24/outline/index.min.js"></script>
@@ -1026,7 +1026,7 @@
                 submitButton.textContent = 'Wird gesendet...';
                 
                 // AJAX-Anfrage senden
-                fetch('./php/process_form.php', {
+                fetch('php/process_form.php', {
                     method: 'POST',
                     body: formData
                 })

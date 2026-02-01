@@ -1,0 +1,58 @@
+# 3steps2 Website - .htaccess Konfiguration fuer Domain Factory
+
+# PHP 8.3 aktivieren (bei Domain Factory)
+<FilesMatch "\.(php|php5|php4|php3|phtml)$">
+    SetHandler application/x-httpd-alt-php83___lsphp
+</FilesMatch>
+
+# Zeichenkodierung
+AddDefaultCharset UTF-8
+
+# Verzeichnislistung deaktivieren
+Options -Indexes
+
+# GZIP Kompression aktivieren
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml
+</IfModule>
+
+# Browser Caching fuer bessere Performance
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Bilder - 1 Monat
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # CSS und JavaScript - 1 Woche
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+
+    # HTML - kein Cache (immer aktuell)
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Sicherheitsheader
+<IfModule mod_headers.c>
+    # Clickjacking-Schutz
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # XSS-Schutz
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # MIME-Sniffing verhindern
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Fehlerseiten (optional - kann spaeter angepasst werden)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
