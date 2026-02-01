@@ -1,0 +1,809 @@
+2025-04-07 18:26:19 - Formular-Anfrage empfangen
+2025-04-07 18:26:19 - Daten empfangen: Name=Chris, Email=ch@bik.biz
+2025-04-07 18:26:19 - Versuch, E-Mail zu senden
+To: contact@3steps2.com
+Subject: Neue Anfrage über das Kontaktformular
+Message: 
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: Chris
+    E-Mail: ch@bik.biz
+    Telefon: Nicht angegeben
+    Unternehmen: Nicht angegeben
+    Interesse an: Nicht angegeben
+
+    Nachricht:
+    Keine Nachricht
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 18:26:19 - E-Mail-Versand erfolgreich
+2025-04-07 18:35:06 - Formular-Anfrage empfangen
+2025-04-07 18:35:06 - Daten empfangen: Name=ch, Email=ch@bik.biz
+2025-04-07 18:35:06 - Versuch, E-Mail zu senden
+To: contact@3steps2.com
+Subject: Neue Anfrage über das Kontaktformular
+Message: 
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: ch
+    E-Mail: ch@bik.biz
+    Telefon: Nicht angegeben
+    Unternehmen: Nicht angegeben
+    Interesse an: Nicht angegeben
+
+    Nachricht:
+    Keine Nachricht
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 18:35:07 - E-Mail-Versand erfolgreich
+
+--------------------------------------------------
+2025-04-07 18:39:16 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => ch
+    [email] => ch@bik.biz
+    [nachricht] => dsdfsdfsdf
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 18:39:16 - Daten validiert und extrahiert:
+- Name: ch
+- Email: ch@bik.biz
+- Telefon: Nicht angegeben
+- Unternehmen: Nicht angegeben
+- Datenschutz akzeptiert: Ja
+2025-04-07 18:39:16 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Neue Anfrage über das Kontaktformular
+- Headers: From: 3steps2 Kontaktformular <contact@3steps2.com>
+Reply-To: ch <ch@bik.biz>
+X-Mailer: PHP/8.3.14
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: ch
+    E-Mail: ch@bik.biz
+    Telefon: Nicht angegeben
+    Unternehmen: Nicht angegeben
+    Interesse an: Nicht angegeben
+
+    Nachricht:
+    dsdfsdfsdf
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 18:39:17 - E-Mail-Versand erfolgreich
+
+--------------------------------------------------
+2025-04-07 19:05:47 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => dsdfsdf
+    [email] => c.hubmann@bewegewas.com
+    [nachricht] => sdfsdfsdf
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:05:47 - Daten validiert und extrahiert:
+- Name: dsdfsdf
+- Email: c.hubmann@bewegewas.com
+- Telefon: Nicht angegeben
+- Unternehmen: Nicht angegeben
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:05:47 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Neue Anfrage über das Kontaktformular
+- Headers: From: contact@3steps2.com
+Reply-To: dsdfsdf <c.hubmann@bewegewas.com>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: dsdfsdf
+    E-Mail: c.hubmann@bewegewas.com
+    Telefon: Nicht angegeben
+    Unternehmen: Nicht angegeben
+    Interesse an: Nicht angegeben
+
+    Nachricht:
+    sdfsdfsdf
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:05:47 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mailpIacD6'
+
+--------------------------------------------------
+2025-04-07 19:06:35 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => Chris
+    [email] => ch@bik.biz
+    [telefon] => 34234234
+    [unternehmen] => bik
+    [nachricht] => dfsdfsfsdf
+    [interesse] => workshop
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:06:35 - Daten validiert und extrahiert:
+- Name: Chris
+- Email: ch@bik.biz
+- Telefon: 34234234
+- Unternehmen: bik
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:06:35 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Neue Anfrage über das Kontaktformular
+- Headers: From: contact@3steps2.com
+Reply-To: Chris <ch@bik.biz>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: Chris
+    E-Mail: ch@bik.biz
+    Telefon: 34234234
+    Unternehmen: bik
+    Interesse an: Nicht angegeben
+
+    Nachricht:
+    dfsdfsfsdf
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:06:35 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mail0VxJoP'
+
+--------------------------------------------------
+2025-04-07 19:09:35 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => Chris
+    [email] => ch@bik.biz
+    [telefon] => 12345678
+    [unternehmen] => BIk
+    [nachricht] => Tolle Website
+    [interesse] => workshop
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:09:35 - Daten validiert und extrahiert:
+- Name: Chris
+- Email: ch@bik.biz
+- Telefon: 12345678
+- Unternehmen: BIk
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:09:35 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Kontaktanfrage von Chris über das 3steps2 Formular
+- Headers: From: contact@3steps2.com
+Reply-To: Chris <ch@bik.biz>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: Chris
+    E-Mail: ch@bik.biz
+    Telefon: 12345678
+    Unternehmen: BIk
+    Interesse an: KI-Workshop
+
+    Nachricht:
+    Tolle Website
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:09:35 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mailA9P85i'
+
+--------------------------------------------------
+2025-04-07 19:10:38 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => ch
+    [email] => ch@bik.biz
+    [telefon] => 12345678
+    [unternehmen] => bik
+    [nachricht] => dfsdfsdfsdf
+    [interesse] => workshop
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:10:38 - Daten validiert und extrahiert:
+- Name: ch
+- Email: ch@bik.biz
+- Telefon: 12345678
+- Unternehmen: bik
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:10:38 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Kontaktanfrage von ch über das 3steps2 Formular
+- Headers: From: contact@3steps2.com
+Reply-To: ch <ch@bik.biz>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: ch
+    E-Mail: ch@bik.biz
+    Telefon: 12345678
+    Unternehmen: bik
+    Interesse an: KI-Workshop
+
+    Nachricht:
+    dfsdfsdfsdf
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:10:38 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mail2FHC6Z'
+
+--------------------------------------------------
+2025-04-07 19:11:41 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => CH
+    [email] => ch@bik.biz
+    [telefon] => 12345678
+    [unternehmen] => bik
+    [nachricht] => sfdsfsf
+    [interesse] => Array
+        (
+            [0] => erstgespraech
+            [1] => workshop
+        )
+
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:11:41 - Daten validiert und extrahiert:
+- Name: CH
+- Email: ch@bik.biz
+- Telefon: 12345678
+- Unternehmen: bik
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:11:41 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Kontaktanfrage von CH über das 3steps2 Formular
+- Headers: From: contact@3steps2.com
+Reply-To: CH <ch@bik.biz>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: CH
+    E-Mail: ch@bik.biz
+    Telefon: 12345678
+    Unternehmen: bik
+    Interesse an: Kostenloses Erstgespräch, KI-Workshop
+
+    Nachricht:
+    sfdsfsf
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:11:41 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mailVIKZkD'
+
+--------------------------------------------------
+2025-04-07 19:14:37 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => Chris
+    [email] => ch@bik.biz
+    [telefon] => 12345678
+    [unternehmen] => bik
+    [nachricht] => sdfsdfsdfsdfsdf
+    [interesse] => Array
+        (
+            [0] => erstgespraech
+        )
+
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:14:37 - Daten validiert und extrahiert:
+- Name: Chris
+- Email: ch@bik.biz
+- Telefon: 12345678
+- Unternehmen: bik
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:14:37 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Kontaktanfrage von Chris über das 3steps2 Formular
+- Headers: From: contact@3steps2.com
+Reply-To: Chris <ch@bik.biz>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: Chris
+    E-Mail: ch@bik.biz
+    Telefon: 12345678
+    Unternehmen: bik
+    Interesse an: Kostenloses Erstgespräch
+
+    Nachricht:
+    sdfsdfsdfsdfsdf
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:14:37 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mailGRatR8'
+
+--------------------------------------------------
+2025-04-07 19:32:40 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => Ch
+    [email] => c.hubmann@bewegewas.com
+    [telefon] => 12345678
+    [unternehmen] => bik
+    [nachricht] => wesdfsd
+    [interesse] => Array
+        (
+            [0] => erstgespraech
+            [1] => workshop
+        )
+
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:32:40 - Daten validiert und extrahiert:
+- Name: Ch
+- Email: c.hubmann@bewegewas.com
+- Telefon: 12345678
+- Unternehmen: bik
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:32:40 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Kontaktanfrage von Ch über das 3steps2 Formular
+- Headers: From: contact@3steps2.com
+Reply-To: Ch <c.hubmann@bewegewas.com>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: Ch
+    E-Mail: c.hubmann@bewegewas.com
+    Telefon: 12345678
+    Unternehmen: bik
+    Interesse an: Kostenloses Erstgespräch, KI-Workshop
+
+    Nachricht:
+    wesdfsd
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:32:40 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mailmrFDHn'
+
+--------------------------------------------------
+2025-04-07 19:38:39 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: POST
+POST-Daten: Array
+(
+    [name] => Chris
+    [email] => ch@bik.biz
+    [telefon] => 2323
+    [unternehmen] => 2323
+    [nachricht] => ich will liebe machen
+    [interesse] => Array
+        (
+            [0] => erstgespraech
+            [1] => workshop
+        )
+
+    [datenschutz] => on
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-07 19:38:39 - Daten validiert und extrahiert:
+- Name: Chris
+- Email: ch@bik.biz
+- Telefon: 2323
+- Unternehmen: 2323
+- Datenschutz akzeptiert: Ja
+2025-04-07 19:38:39 - Versuche, E-Mail zu senden:
+- To: contact@3steps2.com
+- Subject: Kontaktanfrage von Chris über das 3steps2 Formular
+- Headers: From: contact@3steps2.com
+Reply-To: Chris <ch@bik.biz>
+Return-Path: contact@3steps2.com
+X-Mailer: PHP/8.3.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+- Message:
+
+    Neue Anfrage über das Kontaktformular
+    ------------------------------------
+
+    Name: Chris
+    E-Mail: ch@bik.biz
+    Telefon: 2323
+    Unternehmen: 2323
+    Interesse an: Kostenloses Erstgespräch, KI-Workshop
+
+    Nachricht:
+    ich will liebe machen
+
+    ------------------------------------
+    Datenschutzerklärung akzeptiert: Ja
+    Diese E-Mail wurde automatisch vom Kontaktformular auf 3steps2.com gesendet.
+    
+2025-04-07 19:38:39 - E-Mail-Versand erfolgreich
+- Sendmail-Befehl: /usr/sbin/sendmail -fcontact@3steps2.com -t -i < '/temp/623845/u623845/3steps2.com/mailfL0Rvz'
+
+--------------------------------------------------
+2025-04-23 06:21:34 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-04-23 06:21:34 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-06-22 23:15:59 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-06-22 23:15:59 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-08-11 04:38:42 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-08-11 04:38:42 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-08-15 18:54:27 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-08-15 18:54:27 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-09-02 11:18:01 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-09-02 11:18:01 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-09-15 18:54:58 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-09-15 18:54:58 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-09-16 16:33:29 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-09-16 16:33:29 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-11-25 01:57:53 - Neue Formular-Anfrage empfangen
+SERVER: www.3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-11-25 01:57:53 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-11-25 03:12:51 - Neue Formular-Anfrage empfangen
+SERVER: www.3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-11-25 03:12:51 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-11-25 03:12:53 - Neue Formular-Anfrage empfangen
+SERVER: www.3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-11-25 03:12:53 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-11-25 15:14:00 - Neue Formular-Anfrage empfangen
+SERVER: www.3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-11-25 15:14:00 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-11-28 04:37:42 - Neue Formular-Anfrage empfangen
+SERVER: www.3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-11-28 04:37:42 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-12-02 20:30:13 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-12-02 20:30:13 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-12-10 04:40:48 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-12-10 04:40:48 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}
+
+--------------------------------------------------
+2025-12-11 20:04:51 - Neue Formular-Anfrage empfangen
+SERVER: 3steps2.com
+REQUEST_METHOD: GET
+POST-Daten: Array
+(
+)
+
+Mail-Konfiguration:
+- SMTP: localhost
+- smtp_port: 25
+- sendmail_path: /usr/sbin/sendmail -fc.hubmann@bewegewas.com -t -i
+- mail function exists: Ja
+2025-12-11 20:04:51 - FEHLER: Nur POST-Anfragen sind erlaubt.
+Trace: #0 {main}

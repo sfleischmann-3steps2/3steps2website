@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3steps2 - KI-Potential entfesseln, Prozesse optimieren</title>
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/heroicons@2.1.3/24/outline/index.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Explicitly set dark mode to use class
+        }
+    </script>
+    <!-- Automatische System-Dark-Mode-Erkennung -->
+    <script>
+        // Sofort ausgeführte Funktion, um Dark Mode basierend auf System/Präferenz zu setzen
+        (function() {
+            // Gespeichertes Theme oder System-Präferenz
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Entweder gespeichertes Theme oder System-Präferenz verwenden
+            let shouldUseDarkMode = savedTheme === 'dark' || (!savedTheme && prefersDarkMode);
+            
+            // HTML-Element entsprechend setzen
+            if (shouldUseDarkMode) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            console.log('Theme initial setting:', shouldUseDarkMode ? 'dark' : 'light', 
+                        'based on', savedTheme ? 'saved preference' : 'system preference');
+        })();
+    </script>
+    <style>
+        /* Basic transition for smooth theme change */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        :root {
+            --brand-pink: #ee1a6c;
+            --brand-blue: #1da6ef;
+        }
+        /* Remove old toggle styles if they exist */
+        
+        /* Animation Klassen */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        
+        .appear {
+            opacity: 1;
+            transform: translate(0);
+        }
+        
+        /* Modal Animation Klassen */
+        .modal-backdrop {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-backdrop.show {
+            opacity: 1;
+        }
+        
+        .modal-content {
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .modal-content.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        /* Stagger delay für kaskadierte Animationen */
+        .stagger-delay-1 { transition-delay: 0.1s; }
+        .stagger-delay-2 { transition-delay: 0.2s; }
+        .stagger-delay-3 { transition-delay: 0.3s; }
+        .stagger-delay-4 { transition-delay: 0.4s; }
+        
+        /* Counter Styling */
+        .counter-container {
+            display: inline-flex;
+            position: relative;
+            vertical-align: baseline;
+            overflow: visible;
+            column-gap: 0; /* Kein Abstand zwischen den Spalten */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .digit-container {
+            width: 0.6em;
+            display: inline-block;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            font-size: 110%;
+            overflow: hidden;
+            letter-spacing: -0.05em; /* Negativer Buchstabenabstand */
+            margin: 0;
+            padding: 0;
+        }
+        
+        .counter {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            font-size: 110%;
+            display: inline-block;
+            min-width: 2ch; /* Platz für 2 Zeichen */
+            text-align: right; /* Rechtsbündig, damit bei einstelligen Zahlen das Leerzeichen links ist */
+        }
+        
+        /* Typewriter Animation Styles */
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            min-height: 1.2em; /* Verhindert Springen beim Start der Animation */
+            position: relative;
+            top: 0;
+        }
+        
+        .typewriter-cursor {
+            display: inline-block;
+            opacity: 1;
+            animation: blink 0.7s infinite;
+            font-weight: bold;
+            position: relative;
+            top: -1px; /* Feinabstimmung der vertikalen Position */
+            line-height: 1;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans leading-relaxed">
+
+    <!-- Header/Navigation -->
+    <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50 w-full">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-start">
+                 <a href="#" class="text-2xl font-bold text-[#ee1a6c]">
+                    3steps<span class="text-[#1da6ef]">2</span>
+                 </a>
+                <div class="ml-3 flex flex-col justify-start mt-1">
+                    <div class="text-sm md:text-base text-gray-800 dark:text-white hidden sm:block h-6 flex items-center">
+                        <div class="inline-block min-w-[260px]"><!-- Container mit fester Höhe und Mindestbreite -->
+                            <span id="typewriter" class="typewriter-text"></span><span class="typewriter-cursor" aria-hidden="true">&#8203;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Optional Navigation Links -->
+                <!-- <a href="#problem" class="text-gray-600 dark:text-gray-300 hover:text-[#ee1a6c] dark:hover:text-[#ee1a6c]">Herausforderungen</a>
+                <a href="#solution" class="text-gray-600 dark:text-gray-300 hover:text-[#ee1a6c] dark:hover:text-[#ee1a6c]">Lösung</a>
+                <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-[#ee1a6c] dark:hover:text-[#ee1a6c]">Kontakt</a> -->
+
+                <!-- Dark/Light Mode Button with clearer visual cues -->
+                <button id="theme-toggle-btn" class="inline-flex items-center bg-gray-200 rounded-lg p-2 text-sm font-medium text-gray-800 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <!-- Moon icon (for dark mode) -->
+                    <svg id="moon-icon" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    <span>Theme wechseln</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Background Image -->
+    <section id="hero" class="relative py-24 md:py-32 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 w-full h-full z-0">
+            <img src="assets/bg.png" alt="" class="w-full h-full object-cover object-center">
+        </div>
+        <!-- Content with slight dark overlay for better text visibility -->
+        <div class="relative z-10">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
+                    Stellen Sie sich vor: <span class="text-[#ee1a6c]"><span id="counter" class="counter">1</span><span>%</span> effizientere</span> Mitarbeiter?
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto">
+                    Wir machen es möglich! Mit maßgeschneiderten <span class="font-semibold text-[#1da6ef]">KI-Agenten</span> verwandeln wir Ihre Geschäftsprozesse und steigern Kreativität & Produktivität.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-6 fade-in-up" data-animation="fade-in-up">Die KI-Revolution ist hier. Sind Sie bereit?</h2>
+            <p class="text-lg text-center text-gray-600 mb-16 max-w-2xl mx-auto fade-in-up" data-animation="fade-in-up">Viele Unternehmen zögern – oft verhindern diese Hürden den entscheidenden Schritt nach vorn:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Hurdle Card: Know-How -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition duration-300 fade-in-up stagger-delay-1" data-animation="fade-in-up">
+                    <!-- Lightbulb Icon -->
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#1da6ef]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center text-gray-900">Fehlendes Know-How</h3>
+                    <p class="text-gray-600 text-center">Unklarheit über die richtigen KI-Technologien und deren strategischen Einsatz.</p>
+                </div>
+                <!-- Hurdle Card: Use Cases -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition duration-300 fade-in-up stagger-delay-2" data-animation="fade-in-up">
+                    <!-- Target Icon -->
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#1da6ef]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center text-gray-900">Passende Use Cases?</h3>
+                    <p class="text-gray-600 text-center">Wo genau kann KI den größten Mehrwert in Ihrem spezifischen Geschäft bringen?</p>
+                </div>
+                <!-- Hurdle Card: Resources -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition duration-300 fade-in-up stagger-delay-3" data-animation="fade-in-up">
+                    <!-- Users/Team Icon -->
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#1da6ef]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center text-gray-900">Ressourcen-Engpässe</h3>
+                    <p class="text-gray-600 text-center">Interne Teams sind ausgelastet oder es fehlt die nötige KI-Expertise.</p>
+                </div>
+                 <!-- Hurdle Card: Data Strategy -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition duration-300 fade-in-up stagger-delay-4" data-animation="fade-in-up">
+                    <!-- Chart/Data Icon -->
+                    <div class="flex justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-[#1da6ef]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-center text-gray-900">Fehlende Datenstrategie</h3>
+                    <p class="text-gray-600 text-center">Ohne klare Datenbasis und -strategie bleibt das KI-Potenzial ungenutzt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section (3 Steps) -->
+    <section id="solution" class="bg-gradient-to-br from-gray-100 to-gray-200 py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-16 fade-in-up" data-animation="fade-in-up">Ihr Weg zum KI-Erfolg: Klar, strategisch, begleitet.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-transparent hover:border-[#1da6ef] text-center transition duration-300 fade-in-up stagger-delay-1" data-animation="fade-in-up">
+                     <!-- Replace SVG icon with image -->
+                    <div class="w-full h-40 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-gray-400">
+                        <img src="assets/1.png" alt="Beratung Icon" class="h-32 w-auto">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-[#1da6ef]">1. BERATUNG</h3>
+                    <p class="text-gray-600">Wir analysieren Ihre Prozesse, decken ungenutzte KI-Potenziale auf und entwickeln eine Roadmap, die zu Ihren Zielen passt.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-transparent hover:border-[#1da6ef] text-center transition duration-300 fade-in-up stagger-delay-2" data-animation="fade-in-up">
+                    <!-- Replace SVG icon with image -->
+                    <div class="w-full h-40 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-gray-400">
+                        <img src="assets/2.png" alt="Implementierung Icon" class="h-32 w-auto">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-[#1da6ef]">2. IMPLEMENTIERUNG</h3>
+                    <p class="text-gray-600">Unsere Experten entwickeln maßgeschneiderte KI-Agenten und integrieren sie nahtlos in Ihre bestehende IT-Landschaft.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-xl border border-transparent hover:border-[#1da6ef] text-center transition duration-300 fade-in-up stagger-delay-3" data-animation="fade-in-up">
+                     <!-- Replace SVG icon with image -->
+                    <div class="w-full h-40 bg-gray-200 rounded-lg mb-6 flex items-center justify-center text-gray-400">
+                        <img src="assets/3.png" alt="Betreuung Icon" class="h-32 w-auto">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 text-[#1da6ef]">3. BETREUUNG</h3>
+                    <p class="text-gray-600">Wir lassen Sie nicht allein: Mit kontinuierlicher Optimierung, Wartung und Support sichern wir Ihren langfristigen KI-Erfolg.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section id="founder" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/3 mb-10 lg:mb-0 lg:mr-12 text-center fade-in-right" data-animation="fade-in-right">
+                 <!-- Founder Image -->
+                 <img src="assets/N1_sf_5.png" alt="Stefanie Fleischmann, Gründerin von 3steps2" class="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full object-cover shadow-lg border-4 border-[#ee1a6c]">
+            </div>
+            <div class="lg:w-2/3 fade-in-left" data-animation="fade-in-left">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Ihre Expertin: Stefanie Fleischmann</h2>
+                <p class="text-xl text-[#ee1a6c] font-semibold mb-6">Volkswirtin, AI Enthusiast & Gründerin 3steps2</p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Mit über einem Jahrzehnt Erfahrung an der Schnittstelle von Softwareentwicklung, Innovation und strategischem Management (u.a. Zeigewas GmbH, bewegwas Holding GmbH, Conrad Electronic) brennt Stefanie dafür, die transformative Kraft der KI für Unternehmen nutzbar zu machen.
+                </p>
+                 <blockquote class="relative border-l-4 border-[#ee1a6c] pl-6 italic text-gray-700 text-xl my-8">
+                     <span class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 text-6xl text-[#ee1a6c] opacity-20">"</span>
+                    „Durch AI Automatisierungen und AI Agenten helfe ich Unternehmen dabei, unwirtschaftliche Prozesse wieder profitabel zu gestalten und neue Wertschöpfungspotenziale zu heben."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Security Section -->
+    <section id="legal" class="bg-gray-100 py-16 md:py-24">
+        <div class="container mx-auto px-6 text-center">
+             <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 fade-in-up" data-animation="fade-in-up">KI rechtssicher einsetzen? Aber sicher!</h2>
+             <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto fade-in-up" data-animation="fade-in-up">Rechtliche Unsicherheit darf kein Bremsklotz sein. Deshalb arbeiten wir eng mit unserer erfahrenen Partnerin zusammen:</p>
+            <div class="inline-flex flex-col items-center bg-white p-8 rounded-lg shadow-md fade-in-up" data-animation="fade-in-up">
+                 <!-- TODO: Add Partner Logo -->
+                 <!-- <img src="path/to/legal_boettcher_logo.png" alt="Legal Böttcher Logo" class="h-12 mb-4"> -->
+                 <p class="text-xl font-semibold text-gray-800 mb-2">Rechtsanwältin Grit S. Böttcher</p>
+                 <p class="text-gray-600">Ihre juristische Partnerin für einen rechtssicheren Nutzen von Technologien, Automatisierung und KI.</p>
+                 <a href="https://www.legal-boettcher.de/" target="_blank" class="mt-4 text-[#1da6ef] hover:underline">Mehr erfahren</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop/Offer Section -->
+    <section id="offer" class="py-16 md:py-24 bg-white">
+         <div class="container mx-auto px-6">
+            <div class="bg-[#1da6ef] text-white p-10 md:p-16 rounded-xl shadow-xl relative overflow-hidden text-center fade-in-up" data-animation="fade-in-up">
+                <!-- Optional: Background elements -->
+                <div class="absolute top-0 left-0 w-32 h-32 bg-white opacity-10 rounded-full -translate-x-1/4 -translate-y-1/4"></div>
+                <div class="absolute bottom-0 right-0 w-48 h-48 bg-white opacity-10 rounded-full translate-x-1/4 translate-y-1/4"></div>
+
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 relative z-10">Starten Sie jetzt Ihre KI-Reise!</h2>
+                <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto relative z-10">Unser Intensiv-Workshop (nur 4 Stunden): Alles, was Sie über den <span class="font-semibold">rechtssicheren</span> und <span class="font-semibold">strategischen Einsatz</span> von KI wissen müssen, um die nächsten Schritte für Ihr Unternehmen konkret zu planen.</p>
+
+            </div>
+         </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-gray-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+             <!-- Logo im Footer -->
+             <div class="mb-6">
+                 <a href="#" class="text-2xl font-bold text-white !text-white">
+                    3steps<span class="text-[#1da6ef]">2</span>
+                 </a>
+             </div>
+            <p class="mb-2">Stefanie Fleischmann</p>
+            <p class="mb-2">Von Platen Straße 3, 92224 Amberg</p>
+            <p class="mb-2">Telefon: <a href="tel:+4915156527245" class="hover:text-[#1da6ef]">+49 151 565 272 45</a></p>
+            <p class="mb-6">E-Mail: <a href="mailto:s.fleischmann@3steps2.de" class="hover:text-[#1da6ef]">s.fleischmann@3steps2.de</a></p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <!-- Links zu Impressum und Datenschutz mit Popup-Triggern -->
+                <a href="#" id="impressumLink" class="hover:text-white">Impressum</a>
+                <a href="#" id="datenschutzLink" class="hover:text-white">Datenschutz</a>
+            </div>
+
+            <!-- Kontaktformular Modal -->
+            <div id="kontaktModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal-backdrop hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-md mx-4 transform modal-content">
+                    <!-- Modal Header -->
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Kontaktanfrage</h3>
+                        <button class="closeModal text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Modal Body -->
+                    <form id="kontaktForm" class="p-6">
+                        <div class="space-y-4">
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left">Name *</label>
+                                <input type="text" id="name" name="name" required 
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#1da6ef] focus:border-[#1da6ef] bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            </div>
+                            
+                            <!-- E-Mail -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left">E-Mail *</label>
+                                <input type="email" id="email" name="email" required 
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#1da6ef] focus:border-[#1da6ef] bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            </div>
+                            
+                            <!-- Telefon -->
+                            <div>
+                                <label for="telefon" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left">Telefon</label>
+                                <input type="tel" id="telefon" name="telefon" 
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#1da6ef] focus:border-[#1da6ef] bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            </div>
+                            
+                            <!-- Unternehmen -->
+                            <div>
+                                <label for="unternehmen" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left">Unternehmen</label>
+                                <input type="text" id="unternehmen" name="unternehmen" 
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#1da6ef] focus:border-[#1da6ef] bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+                            </div>
+                            
+                            <!-- Nachricht -->
+                            <div>
+                                <label for="nachricht" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 text-left">Ihre Nachricht</label>
+                                <textarea id="nachricht" name="nachricht" rows="3" 
+                                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-[#1da6ef] focus:border-[#1da6ef] bg-white dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
+                            </div>
+                            
+                            <!-- Interesse -->
+                            <div class="border border-gray-200 dark:border-gray-700 p-3 rounded-lg">
+                                <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 text-left">Ich interessiere mich für:</p>
+                                <div class="space-y-2">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="erstgespraech" name="interesse[]" value="erstgespraech" 
+                                            class="h-4 w-4 text-[#1da6ef] focus:ring-[#1da6ef] border-gray-300 dark:border-gray-600 rounded">
+                                        <label for="erstgespraech" class="ml-2 text-sm text-gray-700 dark:text-gray-300 text-left">Kostenloses Erstgespräch</label>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <input type="checkbox" id="workshop" name="interesse[]" value="workshop" 
+                                            class="h-4 w-4 text-[#1da6ef] focus:ring-[#1da6ef] border-gray-300 dark:border-gray-600 rounded">
+                                        <label for="workshop" class="ml-2 text-sm text-gray-700 dark:text-gray-300 text-left">KI-Workshop</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Datenschutz -->
+                            <div class="flex items-start">
+                                <input type="checkbox" id="datenschutz" name="datenschutz" required 
+                                    class="h-4 w-4 mt-1 text-[#1da6ef] focus:ring-[#1da6ef] border-gray-300 dark:border-gray-600 rounded">
+                                <label for="datenschutz" class="ml-2 text-sm text-gray-600 dark:text-gray-400 text-left">
+                                    Ich habe die <a href="#" id="datenschutzFormLink" class="text-[#1da6ef] hover:underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="mt-6">
+                            <button type="submit" 
+                                class="w-full py-3 px-6 bg-[#ee1a6c] hover:bg-opacity-90 text-white !text-white font-bold rounded-lg shadow-md transition transform hover:-translate-y-0.5">
+                                Anfrage senden
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-3 text-center">Felder mit * sind Pflichtfelder</p>
+                        <div id="form-message" class="mt-4 text-center hidden">
+                            <p class="text-green-600 dark:text-green-400"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Erfolgs-Modal nach Formular-Versand -->
+            <div id="erfolgsModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal-backdrop hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-sm mx-4 transform modal-content p-6">
+                    <!-- Erfolgs-Icon -->
+                    <div class="flex justify-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center">
+                            <svg class="w-10 h-10 text-[#ee1a6c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Erfolgs-Nachricht -->
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white text-center mb-2">Vielen Dank!</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-center mb-6">
+                        Wir haben Ihre Anfrage erhalten und werden uns zeitnah bei Ihnen melden.
+                    </p>
+                    
+                    <!-- Schließen-Button -->
+                    <div class="flex justify-center">
+                        <button id="closeErfolgsModal" 
+                            class="py-2 px-6 bg-[#ee1a6c] hover:bg-opacity-90 text-white !text-white font-bold rounded-lg shadow-md transition transform hover:-translate-y-0.5">
+                            Schließen
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impressum Modal -->
+            <div id="impressumModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal-backdrop hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl mx-4 transform modal-content overflow-y-auto max-h-[90vh]">
+                    <!-- Modal Header -->
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Impressum</h3>
+                        <button class="closeModal text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Modal Body -->
+                    <div class="p-6">
+                        <div class="space-y-6 text-left">
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Angaben gemäß § 5 TMG</h4>
+                                <p>3steps2<br>
+                                Stefanie Fleischmann<br>
+                                Von Platen Straße 3<br>
+                                92224 Amberg</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Kontakt</h4>
+                                <p>Telefon: +49 151 565 272 45<br>
+                                E-Mail: s.fleischmann@3steps2.de</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Umsatzsteuer-ID</h4>
+                                <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+                                DE453933861</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h4>
+                                <p>Stefanie Fleischmann<br>
+                                Von Platen Straße 3<br>
+                                92224 Amberg</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Streitschlichtung</h4>
+                                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" class="text-[#ee1a6c] hover:underline">https://ec.europa.eu/consumers/odr/</a>.<br>
+                                Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+                                <p class="mt-2">Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Haftung für Inhalte</h4>
+                                <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+                                <p class="mt-2">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Haftung für Links</h4>
+                                <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
+                                <p class="mt-2">Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">Urheberrecht</h4>
+                                <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+                                <p class="mt-2">Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Datenschutz Modal -->
+            <div id="datenschutzModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center modal-backdrop hidden">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl mx-4 transform modal-content overflow-y-auto max-h-[90vh]">
+                    <!-- Modal Header -->
+                    <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center sticky top-0 bg-white dark:bg-gray-800">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Datenschutzerklärung</h3>
+                        <button class="closeModal text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Modal Body -->
+                    <div class="p-6">
+                        <div class="space-y-6 text-left">
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">1. Datenschutz auf einen Blick</h4>
+                                <h5 class="font-medium mt-3 mb-1">Allgemeine Hinweise</h5>
+                                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
+                                
+                                <h5 class="font-medium mt-3 mb-1">Datenerfassung auf dieser Website</h5>
+                                <p><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong></p>
+                                <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+                                
+                                <p class="mt-2"><strong>Wie erfassen wir Ihre Daten?</strong></p>
+                                <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular eingeben.</p>
+                                <p>Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.</p>
+                                
+                                <p class="mt-2"><strong>Wofür nutzen wir Ihre Daten?</strong></p>
+                                <p>Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+                                
+                                <p class="mt-2"><strong>Welche Rechte haben Sie bezüglich Ihrer Daten?</strong></p>
+                                <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">2. Hosting</h4>
+                                <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+                                
+                                <h5 class="font-medium mt-3 mb-1">Externes Hosting</h5>
+                                <p>Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
+                                <p class="mt-2">Das externe Hosting erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">3. Allgemeine Hinweise und Pflichtinformationen</h4>
+                                
+                                <h5 class="font-medium mt-3 mb-1">Datenschutz</h5>
+                                <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                                <p class="mt-2">Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.</p>
+                                
+                                <h5 class="font-medium mt-3 mb-1">Hinweis zur verantwortlichen Stelle</h5>
+                                <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+                                <p>3steps2<br>
+                                Stefanie Fleischmann<br>
+                                Von Platen Straße 3<br>
+                                93055 Regensburg</p>
+                                <p>Telefon: +49 1515 6527245<br>
+                                E-Mail: contact@3steps2.com</p>
+                                <p class="mt-2">Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.</p>
+                            </div>
+                            
+                                                        <div>
+                                <h4 class="text-lg font-semibold text-[#1da6ef] mb-2">4. Datenerfassung auf dieser Website</h4>
+                                
+                                <h5 class="font-medium mt-3 mb-1">E-Mail-Kontakt</h5>
+                                <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre übermittelten Daten inklusive Ihrer E-Mail-Adresse zwecks Bearbeitung Ihrer Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+                                <p class="mt-2">Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
+                                <p class="mt-2">Die von Ihnen übermittelten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-sm">&copy; 2025 3steps2. Alle Rechte vorbehalten.</p>
+             <p class="text-xs mt-4 opacity-70">Redefine success with AI agents.</p>
+        </div>
+    </footer>
+
+    <!-- Simple script to manually toggle between light/dark modes -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // DOM elements
+        const html = document.documentElement;
+        const toggleBtn = document.getElementById('theme-toggle-btn');
+        
+        // Function to update UI based on theme
+        function updateThemeUI(isDark) {
+            // Button text and icon
+            const btnText = toggleBtn.querySelector('span');
+            const moonIcon = document.getElementById('moon-icon');
+            
+            if (isDark) {
+                // Update button to show "Light Mode" option
+                btnText.textContent = 'Zu Light Mode';
+                toggleBtn.classList.add('bg-gray-700', 'text-white');
+                toggleBtn.classList.remove('bg-gray-200', 'text-gray-800');
+                
+                // Replace moon with sun icon
+                moonIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />`;
+                
+                // Apply dark mode to elements
+                document.body.classList.add('bg-gray-900', 'text-gray-200');
+                document.body.classList.remove('bg-white', 'text-gray-800');
+                
+                document.querySelector('header').classList.add('bg-gray-800');
+                document.querySelector('header').classList.remove('bg-white');
+                
+                // Fix all white cards in dark mode - Target all cards with bg-white or bg-gray-50
+                document.querySelectorAll('.bg-white, .bg-gray-50').forEach(el => {
+                    el.classList.add('bg-gray-800');
+                    el.classList.remove('bg-white', 'bg-gray-50');
+                    
+                    // Fix borders if they exist
+                    if (el.classList.contains('border-gray-200')) {
+                        el.classList.add('border-gray-700');
+                        el.classList.remove('border-gray-200');
+                    }
+                });
+                
+                // Fix icon backgrounds
+                document.querySelectorAll('.bg-gray-200').forEach(el => {
+                    el.classList.add('bg-gray-700');
+                    el.classList.remove('bg-gray-200');
+                });
+                
+                // Apply to all sections that need dark styling
+                document.querySelectorAll('section').forEach(section => {
+                    if (section.id === 'hero' || section.id === 'solution') {
+                        section.classList.add('dark-gradient');
+                        section.classList.remove('bg-gradient-to-br', 'from-gray-100', 'to-gray-200');
+                    }
+                    if (section.id === 'problem' || section.id === 'founder' || section.id === 'offer') {
+                        section.classList.add('bg-gray-900');
+                        section.classList.remove('bg-white');
+                    }
+                    if (section.id === 'legal') {
+                        section.classList.add('bg-gray-800');
+                        section.classList.remove('bg-gray-100');
+                    }
+                });
+                
+                // Style headings
+                document.querySelectorAll('h1, h2, h3, .text-gray-900, .text-gray-800').forEach(el => {
+                    el.classList.add('text-white');
+                    el.classList.remove('text-gray-900', 'text-gray-800');
+                });
+                
+                // Style paragraphs
+                document.querySelectorAll('p.text-gray-600, p.text-gray-700').forEach(el => {
+                    el.classList.add('text-gray-400');
+                    el.classList.remove('text-gray-600', 'text-gray-700');
+                });
+                
+                // Footer
+                document.querySelector('footer').classList.add('bg-black');
+                document.querySelector('footer').classList.remove('bg-gray-800');
+                
+                // Footer Logo immer weiß halten
+                document.querySelector('footer a.text-2xl').classList.add('!text-white');
+                
+                // Make sure the founder quote text is white in dark mode
+                document.querySelectorAll('blockquote').forEach(el => {
+                    el.classList.add('text-gray-200');
+                    el.classList.remove('text-gray-700');
+                });
+                
+            } else {
+                // Update button to show "Dark Mode" option
+                btnText.textContent = 'Zu Dark Mode';
+                toggleBtn.classList.add('bg-gray-200', 'text-gray-800');
+                toggleBtn.classList.remove('bg-gray-700', 'text-white');
+                
+                // Replace sun with moon icon
+                moonIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />`;
+                
+                // Apply light mode to elements
+                document.body.classList.add('bg-white', 'text-gray-800');
+                document.body.classList.remove('bg-gray-900', 'text-gray-200');
+                
+                document.querySelector('header').classList.add('bg-white');
+                document.querySelector('header').classList.remove('bg-gray-800');
+                
+                // Restore all dark cards to light mode
+                document.querySelectorAll('.bg-gray-800').forEach(el => {
+                    if (el.classList.contains('rounded-xl')) {
+                        // These are likely the cards in sections
+                        el.classList.add('bg-gray-50');
+                        el.classList.remove('bg-gray-800');
+                    } else if (el.tagName === 'SECTION') {
+                        // Don't change sections here, they're handled separately
+                    } else {
+                        // Default to white background
+                        el.classList.add('bg-white');
+                        el.classList.remove('bg-gray-800');
+                    }
+                    
+                    // Fix borders if they exist
+                    if (el.classList.contains('border-gray-700')) {
+                        el.classList.add('border-gray-200');
+                        el.classList.remove('border-gray-700');
+                    }
+                });
+                
+                // Fix icon backgrounds
+                document.querySelectorAll('.bg-gray-700').forEach(el => {
+                    if (el.classList.contains('flex') && el.classList.contains('items-center')) {
+                        // This is likely an icon container
+                        el.classList.add('bg-gray-200');
+                        el.classList.remove('bg-gray-700');
+                    }
+                });
+                
+                // Apply to all sections
+                document.querySelectorAll('section').forEach(section => {
+                    if (section.id === 'hero' || section.id === 'solution') {
+                        section.classList.add('bg-gradient-to-br', 'from-gray-100', 'to-gray-200');
+                        section.classList.remove('dark-gradient');
+                    }
+                    if (section.id === 'problem' || section.id === 'founder' || section.id === 'offer') {
+                        section.classList.add('bg-white');
+                        section.classList.remove('bg-gray-900');
+                    }
+                    if (section.id === 'legal') {
+                        section.classList.add('bg-gray-100');
+                        section.classList.remove('bg-gray-800');
+                    }
+                });
+                
+                // Style headings
+                document.querySelectorAll('h1, h2, h3, .text-white').forEach(el => {
+                    el.classList.add('text-gray-900');
+                    el.classList.remove('text-white');
+                });
+                
+                // Style paragraphs
+                document.querySelectorAll('p.text-gray-400').forEach(el => {
+                    el.classList.add('text-gray-600');
+                    el.classList.remove('text-gray-400');
+                });
+                
+                // Footer
+                document.querySelector('footer').classList.add('bg-gray-800');
+                document.querySelector('footer').classList.remove('bg-black');
+                
+                // Footer Logo immer weiß halten
+                document.querySelector('footer a.text-2xl').classList.add('!text-white');
+                
+                // Restore founder quote text to gray in light mode
+                document.querySelectorAll('blockquote').forEach(el => {
+                    el.classList.add('text-gray-700');
+                    el.classList.remove('text-gray-200');
+                });
+            }
+        }
+
+        // Aktuelle Theme-Einstellung ermitteln
+        const isDarkMode = html.classList.contains('dark');
+        
+        // UI entsprechend aktualisieren
+        updateThemeUI(isDarkMode);
+        
+        // System-Präferenz-Änderungen überwachen
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            // Nur wenn keine gespeicherte Benutzereinstellung vorhanden ist
+            if (!localStorage.getItem('theme')) {
+                const newDarkMode = e.matches;
+                html.classList.toggle('dark', newDarkMode);
+                updateThemeUI(newDarkMode);
+                console.log('System theme changed to:', newDarkMode ? 'dark' : 'light');
+            }
+        });
+        
+        // Toggle theme on button click
+        toggleBtn.addEventListener('click', function() {
+            const newDarkMode = !html.classList.contains('dark');
+            
+            // Dark-Mode-Klasse hinzufügen/entfernen
+            if (newDarkMode) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+            
+            // Benutzerpräferenz speichern
+            localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+            
+            // UI aktualisieren
+            updateThemeUI(newDarkMode);
+            
+            console.log('Theme manually toggled to:', newDarkMode ? 'dark' : 'light');
+        });
+    });
+    </script>
+
+    <!-- Kontaktformular Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal Elemente
+            const kontaktModal = document.getElementById('kontaktModal');
+            const impressumModal = document.getElementById('impressumModal');
+            const datenschutzModal = document.getElementById('datenschutzModal');
+            const erfolgsModal = document.getElementById('erfolgsModal');
+            const closeModalBtns = document.querySelectorAll('.closeModal');
+            const closeErfolgsModalBtn = document.getElementById('closeErfolgsModal');
+            const kontaktForm = document.getElementById('kontaktForm');
+            const formMessage = document.getElementById('form-message');
+            
+            // Modal Content-Elemente
+            const kontaktModalContent = kontaktModal.querySelector('.modal-content');
+            const impressumModalContent = impressumModal.querySelector('.modal-content');
+            const datenschutzModalContent = datenschutzModal.querySelector('.modal-content');
+            const erfolgsModalContent = erfolgsModal.querySelector('.modal-content');
+            
+            // Call-to-Action Buttons
+            const ctaButtons = document.querySelectorAll('a[href="#contact"]');
+            const impressumLink = document.getElementById('impressumLink');
+            const datenschutzLink = document.getElementById('datenschutzLink');
+            const datenschutzFormLink = document.getElementById('datenschutzFormLink');
+            
+            // Funktion zum Öffnen eines Modals
+            function openModal(modal, modalContent) {
+                modal.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    modal.classList.add('show');
+                    requestAnimationFrame(() => {
+                        modalContent.classList.add('show');
+                    });
+                });
+                document.body.style.overflow = 'hidden'; // Scrolling verhindern
+            }
+            
+            // Funktion zum Schließen eines Modals
+            function closeModal(modal, modalContent) {
+                modalContent.classList.remove('show');
+                setTimeout(() => {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = ''; // Scrolling wiederherstellen
+                    }, 300);
+                }, 300);
+            }
+            
+            // Modal öffnen bei Klick auf CTA Buttons
+            ctaButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Prüfen, ob der Button für Workshop oder Erstgespräch ist
+                    if (this.textContent.trim().includes('Workshop')) {
+                        document.getElementById('workshop').checked = true;
+                    } else {
+                        document.getElementById('erstgespraech').checked = true;
+                    }
+                    
+                    // Modal anzeigen mit Animation
+                    openModal(kontaktModal, kontaktModalContent);
+                });
+            });
+            
+            // Impressum Modal öffnen
+            impressumLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal(impressumModal, impressumModalContent);
+            });
+            
+            // Datenschutz Modal vom Footer aus öffnen
+            datenschutzLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal(datenschutzModal, datenschutzModalContent);
+            });
+            
+            // Datenschutz Modal vom Kontaktformular aus öffnen
+            datenschutzFormLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation(); // Verhindert, dass das Kontaktformular-Modal geschlossen wird
+                
+                // Kontaktformular-Modal ausblenden (ohne komplett zu schließen)
+                kontaktModalContent.style.opacity = '0';
+                
+                // Datenschutz-Modal öffnen
+                openModal(datenschutzModal, datenschutzModalContent);
+                
+                // Event-Listener für das Schließen des Datenschutz-Modals
+                const handleDatenschutzClose = function() {
+                    // Wenn Datenschutz-Modal geschlossen wird, Kontaktformular wieder anzeigen
+                    kontaktModalContent.style.opacity = '1';
+                    
+                    // Event-Listener wieder entfernen
+                    datenschutzModal.removeEventListener('click', handleOutsideClick);
+                    datenschutzModal.querySelector('.closeModal').removeEventListener('click', handleCloseClick);
+                };
+                
+                const handleOutsideClick = function(e) {
+                    if (e.target === datenschutzModal) {
+                        closeModal(datenschutzModal, datenschutzModalContent);
+                        handleDatenschutzClose();
+                    }
+                };
+                
+                const handleCloseClick = function() {
+                    closeModal(datenschutzModal, datenschutzModalContent);
+                    handleDatenschutzClose();
+                };
+                
+                // Event-Listener hinzufügen
+                datenschutzModal.addEventListener('click', handleOutsideClick);
+                datenschutzModal.querySelector('.closeModal').addEventListener('click', handleCloseClick);
+            });
+            
+            // Alle Modals schließen bei Klick auf X
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal-backdrop');
+                    const modalContent = modal.querySelector('.modal-content');
+                    closeModal(modal, modalContent);
+                });
+            });
+            
+            // Modals schließen bei Klick außerhalb
+            document.querySelectorAll('.modal-backdrop').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        const modalContent = this.querySelector('.modal-content');
+                        closeModal(this, modalContent);
+                    }
+                });
+            });
+
+            // Erfolgs-Modal schließen bei Klick auf Button
+            closeErfolgsModalBtn.addEventListener('click', function() {
+                closeModal(erfolgsModal, erfolgsModalContent);
+            });
+            
+            // Formular absenden
+            kontaktForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Anfrage-Daten aus dem Formular sammeln
+                const formData = new FormData(kontaktForm);
+                
+                // Submit-Button deaktivieren während des Sendens
+                const submitButton = kontaktForm.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Wird gesendet...';
+                
+                // AJAX-Anfrage senden
+                fetch('./php/process_form.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Submit-Button zurücksetzen
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Anfrage senden';
+                    
+                    if (data.success) {
+                        // Bei Erfolg: Formular zurücksetzen und Erfolgsmodal anzeigen
+                        kontaktForm.reset();
+                        
+                        // Kontaktformular schließen mit Animation
+                        kontaktModalContent.classList.remove('show');
+                        setTimeout(() => {
+                            kontaktModal.classList.remove('show');
+                            setTimeout(() => {
+                                kontaktModal.classList.add('hidden');
+                                
+                                // Erfolgsmodal öffnen mit Animation
+                                erfolgsModal.classList.remove('hidden');
+                                requestAnimationFrame(() => {
+                                    erfolgsModal.classList.add('show');
+                                    requestAnimationFrame(() => {
+                                        erfolgsModalContent.classList.add('show');
+                                    });
+                                });
+                            }, 300);
+                        }, 300);
+                    } else {
+                        // Bei Fehler: Fehlermeldung anzeigen
+                        formMessage.querySelector('p').textContent = data.message;
+                        formMessage.querySelector('p').className = 'text-red-600 dark:text-red-400';
+                        formMessage.classList.remove('hidden');
+                        
+                        // Nachricht nach 5 Sekunden ausblenden
+                        setTimeout(() => {
+                            formMessage.classList.add('hidden');
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    // Bei Netzwerkfehler: Fehlermeldung anzeigen
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Anfrage senden';
+                    
+                    formMessage.querySelector('p').textContent = 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.';
+                    formMessage.querySelector('p').className = 'text-red-600 dark:text-red-400';
+                    formMessage.classList.remove('hidden');
+                    
+                    // Nachricht nach 5 Sekunden ausblenden
+                    setTimeout(() => {
+                        formMessage.classList.add('hidden');
+                    }, 5000);
+                    
+                    console.error('Fehler beim Senden des Formulars:', error);
+                });
+            });
+        });
+    </script>
+
+    <style>
+        /* Dark gradient for hero and solution sections */
+        .dark-gradient {
+            background: linear-gradient(to bottom right, rgb(31, 41, 55), rgb(17, 24, 39));
+        }
+    </style>
+    
+    <!-- Typewriter Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typewriter Animation
+            const typewriterElement = document.getElementById('typewriter');
+            const phrases = [
+                "Redefine success with AI agents.",
+                "Potenziale entfesseln mit KI-Agenten.",
+                "Prozesse optimieren. Erfolg steigern.",
+                "KI-Revolution für Ihr Unternehmen."
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            
+            // Sofort einen transparenten Platzhalter setzen, um Springen zu verhindern
+            typewriterElement.innerHTML = '<span style="opacity: 0;">'+phrases[0]+'</span>';
+            
+            // Eigenen Cursor-Stil verwenden
+            const cursorElement = document.querySelector('.typewriter-cursor');
+            // Wir benutzen einen unterstrichenen Leerraum statt | für bessere vertikale Ausrichtung
+            cursorElement.innerHTML = '_';
+            
+            function typeEffect() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                // Wenn wir gerade löschen
+                if (isDeleting) {
+                    // Text verkürzen
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex-1);
+                    charIndex--;
+                    typingSpeed = 50; // Schneller löschen
+                } else {
+                    // Text verlängern
+                    typewriterElement.textContent = currentPhrase.substring(0, charIndex+1);
+                    charIndex++;
+                    typingSpeed = 100; // Normales Tippen
+                }
+                
+                // Überprüfen, ob wir den Text komplett geschrieben haben
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    // Kurze Pause nach dem Schreiben
+                    typingSpeed = 2000; // 2 Sekunden Pause
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    // Wenn der Text komplett gelöscht ist
+                    isDeleting = false;
+                    // Zur nächsten Phrase wechseln
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    // Kurze Pause vor dem Neustart
+                    typingSpeed = 500;
+                }
+                
+                // Fortsetzung der Animation
+                setTimeout(typeEffect, typingSpeed);
+            }
+            
+            // Animation starten
+            setTimeout(typeEffect, 1000);
+            
+            // Intersection Observer für Animationen
+            // Alle Elemente mit data-animation Attribut auswählen
+            const animatedElements = document.querySelectorAll('[data-animation]');
+            
+            // Konfiguration für den Intersection Observer
+            const observerOptions = {
+                root: null, // Viewport als Referenz
+                rootMargin: '0px',
+                threshold: 0.15 // Element wird animiert, sobald 15% sichtbar sind
+            };
+            
+            // Callback-Funktion, wenn Element sichtbar wird
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animation starten durch Hinzufügen der appear-Klasse
+                        entry.target.classList.add('appear');
+                        // Observer entfernen, sobald die Animation ausgelöst wurde
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            
+            // Intersection Observer erstellen
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            
+            // Alle animierten Elemente beobachten
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Counter Animation für den Prozent-Zähler im Hero-Bereich
+            const counterElement = document.getElementById('counter');
+            const heroSection = document.getElementById('hero');
+            let counterStarted = false;
+            
+            // Funktion zur Animation des Zählers
+            function animateCounter(element, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentValue = Math.floor(progress * (end - start) + start);
+                    
+                    // Bei einstelligen Zahlen ein Leerzeichen davor setzen
+                    element.textContent = currentValue < 10 ? " " + currentValue : currentValue;
+                    
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+            
+            // Counter Observer, der nur auf den Hero-Bereich achtet
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !counterStarted) {
+                        counterStarted = true;
+                        animateCounter(counterElement, 1, 40, 2000); // Von 1 auf 40 in 2 Sekunden
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 }); // Animation startet, wenn 50% des Hero-Bereichs sichtbar sind
+            
+            // Beobachte den Hero-Bereich
+            counterObserver.observe(heroSection);
+        });
+    </script>
+</body>
+</html> 
